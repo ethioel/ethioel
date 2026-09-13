@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: collect 3d svgs
-        run: mv profile-*.svg dist/
+        run: mkdir -p dist && mv profile-*.svg dist/
 
       - name: publish all at once
         uses: crazy-max/ghaction-github-pages@v4
