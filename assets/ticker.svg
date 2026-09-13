@@ -1,22 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="44" viewBox="0 0 1250 44" role="img" aria-label="live status ticker">
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="52" viewBox="0 0 1250 52" role="img" aria-label="live status ticker">
   <defs>
-    <clipPath id="cp"><rect width="1250" height="44" rx="22"/></clipPath>
-    <linearGradient id="bg" x1="0" y1="0" x2="1250" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
-      <stop offset="0" stop-color="#1A1030"/>
-      <stop offset="0.5" stop-color="#3A2A5C"/>
-      <stop offset="1" stop-color="#1A1030"/>
+    <clipPath id="cp"><rect width="1250" height="52" rx="26"/></clipPath>
+    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1250" y2="0" spreadMethod="repeat">
+      <stop offset="0" stop-color="#0F0A1F"/>
+      <stop offset="0.5" stop-color="#2A1B45"/>
+      <stop offset="1" stop-color="#0F0A1F"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="1250 0" dur="10s" repeatCount="indefinite"/>
     </linearGradient>
   </defs>
 
-  <rect width="1250" height="44" rx="22" fill="#161B22" stroke="#30363D"/>
+  <rect width="1250" height="52" rx="26" fill="#161B22" stroke="#30363D"/>
 
   <g clip-path="url(#cp)">
-    <rect width="1250" height="44" fill="url(#bg)"/>
+    <rect width="1250" height="52" fill="url(#bg)"/>
     <g>
-      <animateTransform attributeName="transform" type="translate" from="0 0" to="-1250 0" dur="22s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-1250 0" dur="26s" repeatCount="indefinite"/>
       <g id="tick">
-        <text x="0" y="29" font-family="'Segoe UI', Arial, sans-serif" font-size="17" textLength="1250" lengthAdjust="spacingAndGlyphs">
-          <tspan fill="#B79BE0" font-weight="700">🎯 focus&#160;&#160;</tspan><tspan fill="#E6E6E6">applied ML → production systems</tspan><tspan fill="#7D52AD">&#160;&#160;•&#160;&#160;</tspan><tspan fill="#B79BE0" font-weight="700">🌱 learning&#160;&#160;</tspan><tspan fill="#E6E6E6">LLM fine-tuning &amp; systems design</tspan><tspan fill="#7D52AD">&#160;&#160;•&#160;&#160;</tspan><tspan fill="#B79BE0" font-weight="700">💬 ask me&#160;&#160;</tspan><tspan fill="#E6E6E6">Python · PyTorch · TypeScript · AWS</tspan><tspan fill="#7D52AD">&#160;&#160;•&#160;&#160;</tspan><tspan fill="#B79BE0" font-weight="700">⚡ open to&#160;&#160;</tspan><tspan fill="#E6E6E6">collaborations &amp; interesting problems</tspan><tspan fill="#7D52AD">&#160;&#160;•&#160;&#160;</tspan>
+        <text x="0" y="35" font-family="Verdana, 'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" textLength="1250" lengthAdjust="spacingAndGlyphs">
+          <tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">📊 FOCUS&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Data Science · Machine Learning · AI</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">🤖 BUILDING&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">practical ML apps &amp; data-driven tools</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">📈 SKILLS&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Data Analytics · NLP · Predictive Modeling</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">🧠 EXPLORING&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Generative AI · Deep Learning · MLOps · LLMs</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">💻 HOBBY&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">programming &amp; side projects — just for fun</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan>
         </text>
       </g>
       <use href="#tick" x="1250"/>
