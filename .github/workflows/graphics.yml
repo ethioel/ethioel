@@ -29,10 +29,34 @@ jobs:
         uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }} 
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: inspect workspace
+        if: always()
+        run: |
+          echo "── workspace root ──"
+          ls -la
+          echo "── profile* files anywhere ──"
+          find . -path ./.git -prune -o -iname "profile*" -print
+          echo "── dist ──"
+          ls -la dist || echo "(no dist dir)"
 
       - name: collect 3d svgs
-        run: mkdir -p dist && mv profile-*.svg dist/
+        run: |
+          mkdir -p dist
+          shopt -s nullglob
+          files=( profile-*.svg )
+          if [ ${#files[@]} -eq 0 ]; then
+            while IFS= read -r f; do files+=("$f"); done \
+              < <(find . -path ./.git -prune -o -name "profile-*.svg" -print)
+          fi
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::error::3D action produced no SVGs — see 'inspect workspace' output above"
+            exit 1
+          fi
+          mv "${files[@]}" dist/
+          echo "── dist now contains ──"
+          ls -la dist
 
       - name: publish all at once
         uses: crazy-max/ghaction-github-pages@v4
