@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="36" viewBox="0 0 190 36" role="img" aria-label="status: available">
+  <rect width="190" height="36" rx="18" fill="#161B22" stroke="#30363D"/>
+  <circle cx="24" cy="18" r="5" fill="#3FB950"/>
+  <circle cx="24" cy="18" r="5" fill="none" stroke="#3FB950" stroke-width="2">
+    <animate attributeName="r" values="5;13" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.8;0" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  <text x="40" y="23" font-family="'Courier New', monospace" font-size="14" font-weight="700" letter-spacing="2" fill="#3FB950">AVAILABLE</text>
+</svg>
