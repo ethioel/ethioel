@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""robo_walk.py — robot roams the contribution grid like a rover.
+"""robo_walk.py — autonomous foraging robot on the contribution grid.
 Generates dist/robot-dark.svg and dist/robot-light.svg."""
 
 import json
@@ -7,17 +7,22 @@ import os
 import random
 import urllib.request
 
-CYCLE   = 24        # seconds per full sweep (lower = faster)
-CELL    = 12        # cell size (px)
-GAP     = 3         # gap between cells (px)
-PAD     = 6         # outer padding (px)
-SAMPLES = 10        # bezier samples per segment for arclength
-SEED    = 42        # fixed seed -> stable organic path
-JITTER  = 1.8       # waypoint jitter in px (organic look)
+# ── tuning ────────────────────────────────────────────────
+CYCLE     = 20             # seconds per full hunt (all food eaten)
+CELL      = 12             # cell size (px)
+GAP       = 3              # gap between cells (px)
+PAD       = 6              # outer padding (px)
+SAMPLES   = 12             # bezier samples per segment (arclength)
+SEED      = 11             # reroll for a new behavior plan
+
+GREEDY_P  = 0.55           # P(hunt nearest food) vs P(random food)  [0..1]
+ARC_P     = 0.65           # P(curved intercept on a long move)     [0..1]
+ARC_FRAC  = (0.12, 0.28)   # banking depth as fraction of travel distance
 
 DARK  = ["#161B22", "#2A2140", "#423066", "#5F4490", "#7D52AD"]
 LIGHT = ["#EBEDF0", "#E7DEF4", "#CFBAEC", "#AA88D6", "#7D52AD"]
 EYE   = "#7D52AD"
+# ──────────────────────────────────────────────────────────
 
 USER  = os.environ["GITHUB_REPOSITORY_OWNER"]
 TOKEN = os.environ.get("GH_PAT") or os.environ["GITHUB_TOKEN"]
@@ -42,28 +47,63 @@ def fetch_weeks():
     return body["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
 
 
-def make_path(rows, cols, rng):
-    """Boustrophedon waypoints with organic jitter.
-    Returns: [(cell, (x, y)), ...] — every cell exactly once."""
+def center(c, r):
+    return (PAD + c * (CELL + GAP) + CELL / 2, PAD + r * (CELL + GAP) + CELL / 2)
+
+
+def forage_path(food, centers, rng):
+    """DECISION + STEERING. food = [(c, r), ...] cells with commits.
+    Returns [(cell_or_None, (x, y)), ...] in visit order.
+    cell=None entries are steering waypoints (arc intercepts)."""
+    remaining = list(food)
+    start = remaining.pop(0)
+    points = [((start[0], start[1]), centers[(start[0], start[1])])]
+    cur = start
+
+    while remaining:
+        cur_xy = centers[(cur[0], cur[1])]
+
+        # ── decision: exploit nearest, or explore randomly (backtracking) ──
+        if rng.random() < GREEDY_P:
+            nxt = min(remaining, key=lambda t: (centers[t][0] - cur_xy[0]) ** 2
+                                             + (centers[t][1] - cur_xy[1]) ** 2)
+        else:
+            nxt = rng.choice(remaining)
+        remaining.remove(nxt)
+        nxt_xy = centers[(nxt[0], nxt[1])]
+
+        # ── steering: curved intercept on long moves ──
+        dist = ((nxt_xy[0] - cur_xy[0]) ** 2 + (nxt_xy[1] - cur_xy[1]) ** 2) ** 0.5
+        adjacent = max(abs(nxt[0] - cur[0]), abs(nxt[1] - cur[1])) == 1
+        if not adjacent and rng.random() < ARC_P:
+            mx, my = (cur_xy[0] + nxt_xy[0]) / 2, (cur_xy[1] + nxt_xy[1]) / 2
+            dx, dy = nxt_xy[0] - cur_xy[0], nxt_xy[1] - cur_xy[1]
+            px, py = -dy / dist, dx / dist              # unit perpendicular
+            depth = rng.uniform(*ARC_FRAC) * dist * rng.choice((-1, 1))
+            points.append((None, (mx + px * depth, my + py * depth)))
+
+        points.append(((nxt[0], nxt[1]), nxt_xy))
+        cur = nxt
+
+    return points
+
+
+def fallback_cruise(rows, cols):
+    """No food anywhere -> graceful serpentine patrol so the SVG still animates."""
     pts = []
     for r in range(rows):
-        col_range = range(cols) if r % 2 == 0 else reversed(range(cols))
-        for c in col_range:
-            x = PAD + c * (CELL + GAP) + CELL / 2 + rng.uniform(-JITTER, JITTER)
-            y = PAD + r * (CELL + GAP) + CELL / 2 + rng.uniform(-JITTER, JITTER)
-            pts.append(((c, r), (x, y)))
+        for c in (range(cols) if r % 2 == 0 else reversed(range(cols))):
+            pts.append(((c, r), center(c, r)))
     return pts
 
 
 def catmull_rom_curves(points):
-    """Control points -> cubic bezier segments (smooth through all points)."""
-    curves = []
     p = [q for _, q in points]
-    n = len(p)
-    for i in range(n - 1):
+    curves = []
+    for i in range(len(p) - 1):
         p0 = p[i - 1] if i > 0 else p[i]
         p1, p2 = p[i], p[i + 1]
-        p3 = p[i + 2] if i + 2 < n else p2
+        p3 = p[i + 2] if i + 2 < len(p) else p2
         c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
         c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
         curves.append((p1, c1, c2, p2))
@@ -79,8 +119,7 @@ def bez(p0, c1, c2, p1, t):
 
 
 def path_data_and_fractions(points):
-    """SVG path string + arclength fraction at each waypoint
-    (constant-speed timeline so fades match the glide exactly)."""
+    """SVG path + arclength fraction at each waypoint (paced-speed timeline)."""
     curves = catmull_rom_curves(points)
     d = f"M {points[0][1][0]:.1f} {points[0][1][1]:.1f} " + " ".join(
         f"C {c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p1[0]:.1f} {p1[1]:.1f}"
@@ -101,12 +140,14 @@ def path_data_and_fractions(points):
 def level(n):
     return 0 if n == 0 else 1 if n <= 3 else 2 if n <= 7 else 3 if n <= 12 else 4
 
+
+# sprite faces +x — rotate="auto" keeps it pointing along travel
 BOT = (
     '<g>'
     '<animateMotion dur="{d}s" repeatCount="indefinite" calcMode="paced" '
     'rotate="auto" path="{p}"/>'
     '<animateTransform attributeName="transform" additive="sum" type="translate" '
-    'values="0 0; 0 -1; 0 0" dur="1.4s" repeatCount="indefinite"/>'
+    'values="0 0; 0 -0.6; 0 0" dur="1.8s" repeatCount="indefinite"/>'
     '<line x1="7" y1="0" x2="11" y2="0" stroke="#9CA3AF" stroke-width="2"/>'
     '<circle cx="12.5" cy="0" r="1.8" fill="{e}"/>'
     '<rect x="-10" y="-4.5" width="6" height="9" rx="2" fill="#6B7280"/>'
@@ -119,9 +160,13 @@ BOT = (
 
 def build(weeks, palette, rng):
     rows, cols = 7, len(weeks)
-    points = make_path(rows, cols, rng)
+    centers = {(c, r): center(c, r) for c in range(cols) for r in range(rows)}
+    food = [(c, r) for c, wk in enumerate(weeks)
+            for r, day in enumerate(wk["contributionDays"]) if day["contributionCount"]]
+
+    points = forage_path(food, centers, rng) if food else fallback_cruise(rows, cols)
     d, fracs = path_data_and_fractions(points)
-    cell_index = {cell: i for i, (cell, _) in enumerate(points)}
+    cell_index = {cell: i for i, (cell, _) in enumerate(points) if cell is not None}
 
     cells = []
     for c, week in enumerate(weeks):
