@@ -24,18 +24,10 @@ jobs:
       - name: robot graph
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # GH_PAT: ${{ secrets.GH_PAT }}   # if GraphQL 403s
+          # GH_PAT: ${{ secrets.GH_PAT }}   # uncomment only if GraphQL 403s
         run: python robo_walk.py
 
-      - name: pacman graph
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/pacman-contribution-graph.svg?pacman=true&color_snake=#7d52ad
-            dist/pacman-contribution-graph-dark.svg?pacman=true&palette=github-dark&color_snake=#7d52ad
-
-      - name: publish all at once
+      - name: publish
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
