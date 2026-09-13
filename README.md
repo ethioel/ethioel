@@ -26,13 +26,6 @@
 
 I work the full pipeline: training and deploying ML models, building the APIs and data layers behind them, and running the cloud they live on.
 
-| | |
-|---|---|
-| 🎯 **focus** | applied ML → production systems |
-| 🌱 **learning** | LLM fine-tuning & systems design |
-| 💬 **ask me** | Python · PyTorch · TypeScript · AWS |
-| ⚡ **open to** | collaborations & interesting problems |
-
 </td>
 <td width="25%" align="center">
 <img src="https://github.com/ethioel.png" width="140" alt="ethioel" />
@@ -41,6 +34,11 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 </td>
 </tr>
 </table>
+
+<p align="center">
+  &nbsp;<img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/status-available.svg" alt="available" />&nbsp;
+  <img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/ticker.svg" alt="live: focus · learning · ask me · open to" />
+</p>
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
 
@@ -51,7 +49,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=340&lines=programming+languages" alt="programming languages" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=python,java,javascript,typescript,angular,html,css&theme=dark" alt="programming languages" />
 </p>
@@ -59,7 +56,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=260&lines=data+science" alt="data science" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas,numpy,scipy,matplotlib,plotly,opencv&theme=dark" alt="data science" />
 </p>
@@ -67,7 +63,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=300&lines=ai+%2F+ml+%26+llms" alt="ai ml and llms" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=scikitlearn,tensorflow,pytorch,huggingface,streamlit&theme=dark" alt="ai ml and llms" />
 </p>
@@ -75,7 +70,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=380&lines=notebooks+%26+platforms" alt="notebooks and platforms" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda,googlecolab,kaggle&theme=dark" alt="notebooks and platforms" />
 </p>
@@ -83,7 +77,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=330&lines=web+%26+databases" alt="web and databases" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=react,nextjs,nodejs,express,postgres,mongodb&theme=dark" alt="web and databases" />
 </p>
@@ -91,7 +84,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=310&lines=cloud+%26+devops" alt="cloud and devops" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=aws,kubernetes,linux&theme=dark" alt="cloud and devops" />
 </p>
@@ -99,7 +91,6 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=150&lines=tools" alt="tools" />
 </p>
-
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=git,github,vscode,androidstudio&theme=dark" alt="tools" />
 </p>
@@ -138,7 +129,7 @@ I work the full pipeline: training and deploying ML models, building the APIs an
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-light.svg">
-    <img alt="robot sweeping the contribution grid" src="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-dark.svg">
+    <img alt="robot roaming the contribution grid" src="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-dark.svg">
   </picture>
 </p>
 
