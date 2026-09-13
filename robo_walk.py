@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""robo_walk.py — robot smoothly roaming the GitHub contribution grid.
-Generates dist/robot-dark.svg
-and dist/robot-light.svg."""
+"""robo_walk.py — robot roams the contribution grid like a rover.
+Generates dist/robot-dark.svg and dist/robot-light.svg."""
 
 import json
 import os
+import random
 import urllib.request
 
-CYCLE = 24                    # seconds for one full sweep
-CELL, GAP, PAD = 12, 3, 6     # grid geometry (px)
-SAMPLES = 8                   # bezier sampling per segment
+CYCLE   = 24        # seconds per full sweep (lower = faster)
+CELL    = 12        # cell size (px)
+GAP     = 3         # gap between cells (px)
+PAD     = 6         # outer padding (px)
+SAMPLES = 10        # bezier samples per segment for arclength
+SEED    = 42        # fixed seed -> stable organic path
+JITTER  = 1.8       # waypoint jitter in px (organic look)
 
 DARK  = ["#161B22", "#2A2140", "#423066", "#5F4490", "#7D52AD"]
 LIGHT = ["#EBEDF0", "#E7DEF4", "#CFBAEC", "#AA88D6", "#7D52AD"]
@@ -38,23 +42,28 @@ def fetch_weeks():
     return body["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
 
 
-def visit_order(rows, cols):
-    """Column serpentine — guarantees the path passes every cell."""
-    return [
-        (c, r)
-        for c in range(cols)
-        for r in (range(rows) if c % 2 == 0 else reversed(range(rows)))
-    ]
+def make_path(rows, cols, rng):
+    """Boustrophedon waypoints with organic jitter.
+    Returns: [(cell, (x, y)), ...] — every cell exactly once."""
+    pts = []
+    for r in range(rows):
+        col_range = range(cols) if r % 2 == 0 else reversed(range(cols))
+        for c in col_range:
+            x = PAD + c * (CELL + GAP) + CELL / 2 + rng.uniform(-JITTER, JITTER)
+            y = PAD + r * (CELL + GAP) + CELL / 2 + rng.uniform(-JITTER, JITTER)
+            pts.append(((c, r), (x, y)))
+    return pts
 
 
-def catmull_rom_curves(pts):
-    """Convert control points to cubic bezier segments (smooth through all pts)."""
+def catmull_rom_curves(points):
+    """Control points -> cubic bezier segments (smooth through all points)."""
     curves = []
-    n = len(pts)
+    p = [q for _, q in points]
+    n = len(p)
     for i in range(n - 1):
-        p0 = pts[i - 1] if i > 0 else pts[i]
-        p1, p2 = pts[i], pts[i + 1]
-        p3 = pts[i + 2] if i + 2 < n else p2
+        p0 = p[i - 1] if i > 0 else p[i]
+        p1, p2 = p[i], p[i + 1]
+        p3 = p[i + 2] if i + 2 < n else p2
         c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
         c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
         curves.append((p1, c1, c2, p2))
@@ -69,13 +78,13 @@ def bez(p0, c1, c2, p1, t):
     )
 
 
-def path_data_and_fractions(pts):
-    """Build the SVG path string and the time-fraction at each control point,
-    measured by arclength so cell fades stay in sync with the glide."""
-    curves = catmull_rom_curves(pts)
-    d = f"M {pts[0][0]:.1f} {pts[0][1]:.1f} " + " ".join(
+def path_data_and_fractions(points):
+    """SVG path string + arclength fraction at each waypoint
+    (constant-speed timeline so fades match the glide exactly)."""
+    curves = catmull_rom_curves(points)
+    d = f"M {points[0][1][0]:.1f} {points[0][1][1]:.1f} " + " ".join(
         f"C {c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p1[0]:.1f} {p1[1]:.1f}"
-        for p0, c1, c2, p1 in curves
+        for _, c1, c2, p1 in curves
     )
     fracs, acc = [0.0], 0.0
     for p0, c1, c2, p1 in curves:
@@ -92,8 +101,6 @@ def path_data_and_fractions(pts):
 def level(n):
     return 0 if n == 0 else 1 if n <= 3 else 2 if n <= 7 else 3 if n <= 12 else 4
 
-
-# sprite drawn facing +x (forward = travel direction under rotate="auto")
 BOT = (
     '<g>'
     '<animateMotion dur="{d}s" repeatCount="indefinite" calcMode="paced" '
@@ -110,15 +117,11 @@ BOT = (
 )
 
 
-def build(weeks, palette):
+def build(weeks, palette, rng):
     rows, cols = 7, len(weeks)
-    order = visit_order(rows, cols)
-    cx = lambda c: PAD + c * (CELL + GAP) + CELL / 2
-    cy = lambda r: PAD + r * (CELL + GAP) + CELL / 2
-
-    pts = [(cx(c), cy(r)) for c, r in order]
-    d, fracs = path_data_and_fractions(pts)
-    visit_index = {cell: i for i, cell in enumerate(order)}
+    points = make_path(rows, cols, rng)
+    d, fracs = path_data_and_fractions(points)
+    cell_index = {cell: i for i, (cell, _) in enumerate(points)}
 
     cells = []
     for c, week in enumerate(weeks):
@@ -126,7 +129,7 @@ def build(weeks, palette):
             x, y = PAD + c * (CELL + GAP), PAD + r * (CELL + GAP)
             anim = ""
             if day["contributionCount"]:
-                t1 = fracs[visit_index[(c, r)]]
+                t1 = fracs[cell_index[(c, r)]]
                 t2 = min(t1 + 0.01, 0.999)
                 anim = (
                     f'<animate attributeName="opacity" values="1;1;0;0" '
@@ -150,6 +153,6 @@ def build(weeks, palette):
 if __name__ == "__main__":
     weeks = fetch_weeks()
     os.makedirs("dist", exist_ok=True)
-    open("dist/robot-dark.svg", "w").write(build(weeks, DARK))
-    open("dist/robot-light.svg", "w").write(build(weeks, LIGHT))
+    open("dist/robot-dark.svg", "w").write(build(weeks, DARK, random.Random(SEED)))
+    open("dist/robot-light.svg", "w").write(build(weeks, LIGHT, random.Random(SEED)))
     print(f"ok - {len(weeks)} weeks -> dist/robot-dark.svg, dist/robot-light.svg")
