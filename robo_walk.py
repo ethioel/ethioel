@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""robo_walk.py — autonomous foraging robot on the contribution grid.
+"""robo_walk.py — rover sweeping the contribution grid, end to end.
 Generates dist/robot-dark.svg and dist/robot-light.svg."""
 
 import json
@@ -8,16 +8,17 @@ import random
 import urllib.request
 
 # ── tuning ────────────────────────────────────────────────
-CYCLE     = 20             # seconds per full hunt (all food eaten)
-CELL      = 12             # cell size (px)
-GAP       = 3              # gap between cells (px)
-PAD       = 6              # outer padding (px)
-SAMPLES   = 12             # bezier samples per segment (arclength)
-SEED      = 11             # reroll for a new behavior plan
+CYCLE   = 24            # seconds per full sweep (lower = faster)
+CELL    = 12            # cell size (px)
+GAP     = 3             # gap between cells (px)
+PAD     = 6             # outer padding (px)
+SAMPLES = 12            # bezier samples per segment (arclength)
+SEED    = 7             # reroll for a new flight plan
 
-GREEDY_P  = 0.55           # P(hunt nearest food) vs P(random food)  [0..1]
-ARC_P     = 0.65           # P(curved intercept on a long move)     [0..1]
-ARC_FRAC  = (0.12, 0.28)   # banking depth as fraction of travel distance
+SWAY_CHANCE = 0.75      # probability a row contains any maneuver
+SWAY_MIN    = 1         # min maneuvers per (swaying) row
+SWAY_MAX    = 3         # max maneuvers per row
+SWAY_AMP    = (5.0, 9.0)  # banking depth range in px
 
 DARK  = ["#161B22", "#2A2140", "#423066", "#5F4490", "#7D52AD"]
 LIGHT = ["#EBEDF0", "#E7DEF4", "#CFBAEC", "#AA88D6", "#7D52AD"]
@@ -51,49 +52,26 @@ def center(c, r):
     return (PAD + c * (CELL + GAP) + CELL / 2, PAD + r * (CELL + GAP) + CELL / 2)
 
 
-def forage_path(food, centers, rng):
-    """DECISION + STEERING. food = [(c, r), ...] cells with commits.
-    Returns [(cell_or_None, (x, y)), ...] in visit order.
-    cell=None entries are steering waypoints (arc intercepts)."""
-    remaining = list(food)
-    start = remaining.pop(0)
-    points = [((start[0], start[1]), centers[(start[0], start[1])])]
-    cur = start
-
-    while remaining:
-        cur_xy = centers[(cur[0], cur[1])]
-
-        # ── decision: exploit nearest, or explore randomly (backtracking) ──
-        if rng.random() < GREEDY_P:
-            nxt = min(remaining, key=lambda t: (centers[t][0] - cur_xy[0]) ** 2
-                                             + (centers[t][1] - cur_xy[1]) ** 2)
-        else:
-            nxt = rng.choice(remaining)
-        remaining.remove(nxt)
-        nxt_xy = centers[(nxt[0], nxt[1])]
-
-        # ── steering: curved intercept on long moves ──
-        dist = ((nxt_xy[0] - cur_xy[0]) ** 2 + (nxt_xy[1] - cur_xy[1]) ** 2) ** 0.5
-        adjacent = max(abs(nxt[0] - cur[0]), abs(nxt[1] - cur[1])) == 1
-        if not adjacent and rng.random() < ARC_P:
-            mx, my = (cur_xy[0] + nxt_xy[0]) / 2, (cur_xy[1] + nxt_xy[1]) / 2
-            dx, dy = nxt_xy[0] - cur_xy[0], nxt_xy[1] - cur_xy[1]
-            px, py = -dy / dist, dx / dist              # unit perpendicular
-            depth = rng.uniform(*ARC_FRAC) * dist * rng.choice((-1, 1))
-            points.append((None, (mx + px * depth, my + py * depth)))
-
-        points.append(((nxt[0], nxt[1]), nxt_xy))
-        cur = nxt
-
-    return points
-
-
-def fallback_cruise(rows, cols):
-    """No food anywhere -> graceful serpentine patrol so the SVG still animates."""
+def make_path(rows, cols, rng):
+    """Global + maneuver planner. Cruises each row end-to-end; at random
+    boundaries injects ONE sway waypoint (perpendicular banking arc).
+    Returns [(cell_or_None, (x, y)), ...] in visit order."""
     pts = []
     for r in range(rows):
-        for c in (range(cols) if r % 2 == 0 else reversed(range(cols))):
+        lane = list(range(cols)) if r % 2 == 0 else list(reversed(range(cols)))
+        sways = set()
+        if rng.random() < SWAY_CHANCE and len(lane) > 4:
+            for _ in range(rng.randint(SWAY_MIN, SWAY_MAX)):
+                sways.add(rng.randint(2, len(lane) - 2))   # away from the turns
+        side = 1.0
+        for i, c in enumerate(lane):
             pts.append(((c, r), center(c, r)))
+            if (i + 1) in sways:
+                x1, y1 = center(c, r)
+                x2, _  = center(lane[i + 1], r)
+                amp = rng.uniform(*SWAY_AMP) * side
+                side = -side                                   # S then mirrored S
+                pts.append((None, ((x1 + x2) / 2, y1 + amp)))
     return pts
 
 
@@ -140,8 +118,6 @@ def path_data_and_fractions(points):
 def level(n):
     return 0 if n == 0 else 1 if n <= 3 else 2 if n <= 7 else 3 if n <= 12 else 4
 
-
-# sprite faces +x — rotate="auto" keeps it pointing along travel
 BOT = (
     '<g>'
     '<animateMotion dur="{d}s" repeatCount="indefinite" calcMode="paced" '
@@ -160,11 +136,7 @@ BOT = (
 
 def build(weeks, palette, rng):
     rows, cols = 7, len(weeks)
-    centers = {(c, r): center(c, r) for c in range(cols) for r in range(rows)}
-    food = [(c, r) for c, wk in enumerate(weeks)
-            for r, day in enumerate(wk["contributionDays"]) if day["contributionCount"]]
-
-    points = forage_path(food, centers, rng) if food else fallback_cruise(rows, cols)
+    points = make_path(rows, cols, rng)
     d, fracs = path_data_and_fractions(points)
     cell_index = {cell: i for i, (cell, _) in enumerate(points) if cell is not None}
 
