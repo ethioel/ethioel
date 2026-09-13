@@ -22,22 +22,26 @@
 <tr>
 <td width="75%">
 
-**Samuel K.** — Machine Learning & Full-Stack Engineer
+**Samuel K.** — CS Student · Aspiring Data Scientist & ML Engineer
 
-Computer Science graduate from Ethiopia with hands-on IT support experience, passionate about leveraging **AI, ML & Data Engineering** to solve real-world problems. I build scalable, production-ready software while continuously expanding into emerging technologies.
+Computer Science student from Ethiopia, into everything data. When I'm not studying, I'm building — Android apps, web apps, CLI tools — turning what I learn into things that actually work.
+
+| | |
+|---|---|
+| 🛠️ **building** | Android · Web · CLI apps |
+| ☕ **fuel** | coffee, curiosity & side projects |
 
 </td>
 <td width="25%" align="center">
 <img src="https://github.com/ethioel.png" width="140" alt="ethioel" />
-<br/>
-<sub><b>@ethioel</b></sub>
+<br/><br/>
+<img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/status-available.svg" width="150" alt="available" />
 </td>
 </tr>
 </table>
 
 <p align="center">
-  &nbsp;<img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/status-available.svg" alt="available" />&nbsp;
-  <img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/ticker.svg" alt="live: focus · learning · ask me · open to" />
+  <img src="https://raw.githubusercontent.com/ethioel/ethioel/main/assets/ticker.svg" alt="live: focus · building · skills · exploring · hobby" />
 </p>
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
