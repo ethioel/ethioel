@@ -24,7 +24,7 @@
 
 **Samuel K.** — Machine Learning & Full-Stack Engineer
 
-I work the full pipeline: training and deploying ML models, building the APIs and data layers behind them, and running the cloud they live on.
+Computer Science graduate from Ethiopia with hands-on IT support experience, passionate about leveraging **AI, ML & Data Engineering** to solve real-world problems. I build scalable, production-ready software while continuously expanding into emerging technologies.
 
 </td>
 <td width="25%" align="center">
@@ -102,9 +102,9 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 </div>
 
 <p align="center">
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=8" alt="languages across repos" />
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=8" alt="languages by commits" />
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&utcOffset=3&v=8" alt="productive time" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=9" alt="languages across repos" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=9" alt="languages by commits" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&utcOffset=3&v=9" alt="productive time" />
 </p>
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
@@ -114,15 +114,7 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 </div>
 
 <p align="center">
-  <img height="165" src="https://streak-stats.demolab.com?user=ethioel&hide_border=true&background=0D1117&ring=7D52AD&fire=7D52AD&currStreakNum=C9D1D9&currStreakLabel=7D52AD&sideNums=C9D1D9&sideLabels=8B949E&dates=8B949E&v=8" alt="streak" />
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/pacman-contribution-graph-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/pacman-contribution-graph.svg">
-    <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/ethioel/ethioel/output/pacman-contribution-graph-dark.svg">
-  </picture>
+  <img height="165" src="https://streak-stats.demolab.com?user=ethioel&hide_border=true&background=0D1117&ring=7D52AD&fire=7D52AD&currStreakNum=C9D1D9&currStreakLabel=7D52AD&sideNums=C9D1D9&sideLabels=8B949E&dates=8B949E&v=9" alt="streak" />
 </p>
 
 <p align="center">
