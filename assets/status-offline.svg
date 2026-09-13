@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="36" viewBox="0 0 190 36" role="img" aria-label="status: offline">
+  <rect width="190" height="36" rx="18" fill="#161B22" stroke="#30363D"/>
+  <circle cx="24" cy="18" r="5" fill="#6E7681"/>
+  <text x="40" y="23" font-family="'Courier New', monospace" font-size="14" font-weight="700" letter-spacing="2" fill="#8B949E">OFFLINE</text>
+</svg>
