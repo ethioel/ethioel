@@ -24,7 +24,7 @@
 
 **Samuel K.** — Machine Learning & Full-Stack Engineer
 
-I work the full pipeline: training and deploying ML models, building the APIs and data layers behind them.
+I work the full pipeline: training and deploying ML models, building the APIs and data layers behind them, and running the cloud they live on.
 
 | | |
 |---|---|
@@ -48,43 +48,57 @@ I work the full pipeline: training and deploying ML models, building the APIs an
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=LANGUAGES+%26+TOOLS" alt="languages and tools" />
 </div>
 
-**programming languages**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=340&lines=programming+languages" alt="programming languages" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=python,java,javascript,typescript,angular,html,css&theme=dark" alt="programming languages" />
 </p>
 
-**data science**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=260&lines=data+science" alt="data science" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=pandas,numpy,scipy,matplotlib,plotly,opencv&theme=dark" alt="data science" />
 </p>
 
-**ai / ml & llms**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=300&lines=ai+%2F+ml+%26+llms" alt="ai ml and llms" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=scikitlearn,tensorflow,pytorch,huggingface,streamlit&theme=dark" alt="ai ml and llms" />
 </p>
 
-**notebooks & platforms**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=380&lines=notebooks+%26+platforms" alt="notebooks and platforms" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=anaconda,googlecolab,kaggle&theme=dark" alt="notebooks and platforms" />
 </p>
 
-**web & databases**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=330&lines=web+%26+databases" alt="web and databases" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=react,nextjs,nodejs,express,postgres,mongodb&theme=dark" alt="web and databases" />
 </p>
 
-**cloud & devops**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=310&lines=cloud+%26+devops" alt="cloud and devops" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=aws,kubernetes,linux&theme=dark" alt="cloud and devops" />
 </p>
 
-**tools**
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=15&duration=2500&pause=1200&color=E6E6E6&center=true&vCenter=true&width=150&lines=tools" alt="tools" />
+</p>
 
 <p align="center">
   <img src="https://go-skill-icons.vercel.app/api/icons?i=git,github,vscode,androidstudio&theme=dark" alt="tools" />
@@ -97,32 +111,19 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 </div>
 
 <p align="center">
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=7" alt="languages across repos" />
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=7" alt="languages by commits" />
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&utcOffset=3&v=7" alt="productive time" />
-</p>
-
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=GITHUB+STATS" alt="github stats" />
-</div>
-
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ethioel&show_icons=true&hide_border=true&bg_color=0D1117&title_color=7D52AD&icon_color=7D52AD&text_color=C9D1D9&include_all_commits=true&count_private=true&v=7" alt="stats" />
-  <img height="165" src="https://streak-stats.demolab.com?user=ethioel&hide_border=true&background=0D1117&ring=7D52AD&fire=7D52AD&currStreakNum=C9D1D9&currStreakLabel=7D52AD&sideNums=C9D1D9&sideLabels=8B949E&dates=8B949E&v=7" alt="streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ethioel&theme=discord&no-frame=true&row=1&column=7&margin-w=8&v=7" alt="trophies" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=8" alt="languages across repos" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&v=8" alt="languages by commits" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ethioel&bg_color=0D1117&border_color=7D52AD&title_color=9D7BC8&text_color=C9D1D9&utcOffset=3&v=8" alt="productive time" />
 </p>
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=CONTRIBUTION+MAP" alt="contribution map" />
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=CONTRIBUTIONS" alt="contributions" />
 </div>
 
 <p align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=ethioel&hide_border=true&bg_color=0D1117&color=C9D1D9&line=7D52AD&point=9D7BC8&area=true&area_color=7D52AD33&v=7" alt="activity graph" />
+  <img height="165" src="https://streak-stats.demolab.com?user=ethioel&hide_border=true&background=0D1117&ring=7D52AD&fire=7D52AD&currStreakNum=C9D1D9&currStreakLabel=7D52AD&sideNums=C9D1D9&sideLabels=8B949E&dates=8B949E&v=8" alt="streak" />
 </p>
 
 <p align="center">
@@ -135,23 +136,23 @@ I work the full pipeline: training and deploying ML models, building the APIs an
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/profile-night-rainbow.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/profile-green.svg">
-    <img alt="3d contribution graph" src="https://raw.githubusercontent.com/ethioel/ethioel/output/profile-night-rainbow.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-light.svg">
+    <img alt="robot sweeping the contribution grid" src="https://raw.githubusercontent.com/ethioel/ethioel/output/robot-dark.svg">
   </picture>
 </p>
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=FEATURED+REPOS" alt="featured repos" />
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=18&duration=2500&pause=1200&color=9D7BC8&center=true&vCenter=true&width=520&lines=FEATURED+PROJECTS" alt="featured projects" />
 </div>
 
-<p align="center">
-  <a href="https://github.com/ethioel/AlphaRun-HTML"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethioel&repo=AlphaRun-HTML&hide_border=true&bg_color=161B22&title_color=7D52AD&icon_color=7D52AD&text_color=C9D1D9&v=7" width="32%" alt="AlphaRun-HTML" /></a>
-  <a href="https://github.com/ethioel/cerviscan-ai"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethioel&repo=cerviscan-ai&hide_border=true&bg_color=161B22&title_color=7D52AD&icon_color=7D52AD&text_color=C9D1D9&v=7" width="32%" alt="cerviscan-ai" /></a>
-  <a href="https://github.com/ethioel/addis-housing-price-predictor"><img src="https://github-readme-stats.vercel.app/api/pin/?username=ethioel&repo=addis-housing-price-predictor&hide_border=true&bg_color=161B22&title_color=7D52AD&icon_color=7D52AD&text_color=C9D1D9&v=7" width="32%" alt="addis-housing-price-predictor" /></a>
-</p>
+| Project | About | |
+|---|---|---|
+| **[cerviscan-ai](https://github.com/ethioel/cerviscan-ai)** | AI-assisted cervical cancer screening from imaging data | ![stars](https://img.shields.io/github/stars/ethioel/cerviscan-ai?style=flat-square&logo=github&label=%E2%AD%90&color=7D52AD&labelColor=161B22) ![forks](https://img.shields.io/github/forks/ethioel/cerviscan-ai?style=flat-square&logo=github&label=forks&color=9D7BC8&labelColor=161B22) |
+| **[addis-housing-price-predictor](https://github.com/ethioel/addis-housing-price-predictor)** | ML model predicting housing prices in Addis Ababa | ![stars](https://img.shields.io/github/stars/ethioel/addis-housing-price-predictor?style=flat-square&logo=github&label=%E2%AD%90&color=7D52AD&labelColor=161B22) ![forks](https://img.shields.io/github/forks/ethioel/addis-housing-price-predictor?style=flat-square&logo=github&label=forks&color=9D7BC8&labelColor=161B22) |
+| **[AlphaRun-HTML](https://github.com/ethioel/AlphaRun-HTML)** | Web project built with HTML/CSS | ![stars](https://img.shields.io/github/stars/ethioel/AlphaRun-HTML?style=flat-square&logo=github&label=%E2%AD%90&color=7D52AD&labelColor=161B22) ![forks](https://img.shields.io/github/forks/ethioel/AlphaRun-HTML?style=flat-square&logo=github&label=forks&color=9D7BC8&labelColor=161B22) |
 
 <img width="100%" height="2" src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" />
 
