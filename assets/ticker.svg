@@ -1,26 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="52" viewBox="0 0 1250 52" role="img" aria-label="live status ticker">
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="76" viewBox="0 0 1250 76" role="img" aria-label="live status ticker">
   <defs>
-    <clipPath id="cp"><rect width="1250" height="52" rx="26"/></clipPath>
-    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1250" y2="0" spreadMethod="repeat">
+    <clipPath id="cp"><rect width="1250" height="76" rx="38"/></clipPath>
+    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="4650" y2="0" spreadMethod="repeat">
       <stop offset="0" stop-color="#0F0A1F"/>
       <stop offset="0.5" stop-color="#2A1B45"/>
       <stop offset="1" stop-color="#0F0A1F"/>
-      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="1250 0" dur="10s" repeatCount="indefinite"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="4650 0" dur="10s" repeatCount="indefinite"/>
     </linearGradient>
   </defs>
 
-  <rect width="1250" height="52" rx="26" fill="#161B22" stroke="#30363D"/>
+  <rect width="1250" height="76" rx="38" fill="#161B22" stroke="#30363D"/>
 
   <g clip-path="url(#cp)">
-    <rect width="1250" height="52" fill="url(#bg)"/>
+    <rect width="1250" height="76" fill="url(#bg)"/>
     <g>
-      <animateTransform attributeName="transform" type="translate" from="0 0" to="-1250 0" dur="26s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-4650 0" dur="42s" repeatCount="indefinite"/>
       <g id="tick">
-        <text x="0" y="35" font-family="Verdana, 'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" textLength="1250" lengthAdjust="spacingAndGlyphs">
-          <tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">📊 FOCUS&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Data Science · Machine Learning · AI</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">🤖 BUILDING&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">practical ML apps &amp; data-driven tools</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">📈 SKILLS&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Data Analytics · NLP · Predictive Modeling</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">🧠 EXPLORING&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">Generative AI · Deep Learning · MLOps · LLMs</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5" stroke="#1A1030" stroke-width="0.4">💻 HOBBY&#160;&#160;</tspan><tspan fill="#FFFFFF" stroke="#1A1030" stroke-width="0.4">programming &amp; side projects — just for fun</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan>
+        <text x="0" y="51.5" font-family="Verdana, 'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="bold" textLength="4650" lengthAdjust="spacing" fill="#0F0A1F" opacity="0.9">
+          <tspan>📊 FOCUS&#160;&#160;</tspan><tspan>Data Science · Machine Learning · AI</tspan><tspan>&#160;&#160;◆&#160;&#160;</tspan><tspan>🤖 BUILDING&#160;&#160;</tspan><tspan>practical ML apps &amp; data-driven tools</tspan><tspan>&#160;&#160;◆&#160;&#160;</tspan><tspan>📈 SKILLS&#160;&#160;</tspan><tspan>Data Analytics · NLP · Predictive Modeling</tspan><tspan>&#160;&#160;◆&#160;&#160;</tspan><tspan>🧠 EXPLORING&#160;&#160;</tspan><tspan>Generative AI · Deep Learning · MLOps · LLMs</tspan><tspan>&#160;&#160;◆&#160;&#160;</tspan><tspan>💻 HOBBY&#160;&#160;</tspan><tspan>programming &amp; side projects — just for fun</tspan><tspan>&#160;&#160;◆&#160;&#160;</tspan>
+        </text>
+        <text x="0" y="49" font-family="Verdana, 'Trebuchet MS', 'Segoe UI', Arial, sans-serif" font-size="26" font-weight="bold" textLength="4650" lengthAdjust="spacing">
+          <tspan fill="#C9A8F5">📊 FOCUS&#160;&#160;</tspan><tspan fill="#FFFFFF">Data Science · Machine Learning · AI</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5">🤖 BUILDING&#160;&#160;</tspan><tspan fill="#FFFFFF">practical ML apps &amp; data-driven tools</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5">📈 SKILLS&#160;&#160;</tspan><tspan fill="#FFFFFF">Data Analytics · NLP · Predictive Modeling</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5">🧠 EXPLORING&#160;&#160;</tspan><tspan fill="#FFFFFF">Generative AI · Deep Learning · MLOps · LLMs</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan><tspan fill="#C9A8F5">💻 HOBBY&#160;&#160;</tspan><tspan fill="#FFFFFF">programming &amp; side projects — just for fun</tspan><tspan fill="#9D7BC8">&#160;&#160;◆&#160;&#160;</tspan>
         </text>
       </g>
-      <use href="#tick" x="1250"/>
+      <use href="#tick" x="4650"/>
     </g>
   </g>
 </svg>
